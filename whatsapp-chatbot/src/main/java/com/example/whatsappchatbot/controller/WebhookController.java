@@ -7,6 +7,7 @@ import jakarta.validation.Valid;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -21,6 +22,16 @@ public class WebhookController {
 
     public WebhookController(ReplyService replyService) {
         this.replyService = replyService;
+    }
+
+    @GetMapping(path = "/", produces = MediaType.TEXT_PLAIN_VALUE)
+    public String home() {
+        return """
+                WhatsApp Chatbot backend is running.
+
+                Use POST /webhook with JSON:
+                { "from": "233000000000", "text": "Hi" }
+                """;
     }
 
     @PostMapping(path = "/webhook", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
