@@ -1,4 +1,4 @@
-FROM gradle:8.14.4-jdk25 AS build
+FROM gradle:8.14.4-jdk21 AS build
 WORKDIR /app
 
 # Cache dependencies first
@@ -10,7 +10,7 @@ RUN ./gradlew --no-daemon dependencies
 COPY src ./src
 RUN ./gradlew --no-daemon clean bootJar
 
-FROM eclipse-temurin:25-jre
+FROM eclipse-temurin:21-jre
 WORKDIR /app
 
 # Render sets PORT; app reads PORT via application.properties
