@@ -74,8 +74,9 @@ cd c:\WhatsAppChatbot\whatsapp-chatbot
 
 - Push this project to GitHub.
 - In Render, create a **New Web Service** from your GitHub repo.
-- **Build Command**: `./gradlew clean build`
-- **Start Command**: `java -jar build/libs/whatsapp-chatbot-0.0.1-SNAPSHOT.jar`
+- If Render does not offer a Java runtime, choose **Docker**.
+- **Root Directory**: `whatsapp-chatbot` (this folder contains `Dockerfile`, `gradlew`, `build.gradle`)
+- Render will build using the included `Dockerfile`.
 - After deploy, test:
   - `POST https://<your-render-service>.onrender.com/webhook`
 
