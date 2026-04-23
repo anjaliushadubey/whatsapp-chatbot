@@ -4,6 +4,7 @@ WORKDIR /app
 # Cache dependencies first
 COPY build.gradle settings.gradle gradlew gradlew.bat ./
 COPY gradle ./gradle
+RUN chmod +x ./gradlew
 RUN ./gradlew --no-daemon dependencies
 
 # Build
